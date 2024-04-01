@@ -16,5 +16,6 @@ public class SourceSub extends Wrapper{
         SourceSub sourceSub = new SourceSub();
         sourceSub.method1();
         sourceSub.method2();
+
     }
 }
