@@ -12,8 +12,10 @@ public class TicketSpinLock {
     private static final long ticketNumOffset;
     private static final long processingNumOffset;
 
+    //代表下一個票號，由進入的執行緒遞增
     private volatile int ticketNum = 0;
 
+    //代表當前正在處理的票號，表明鎖正由哪個執行緒持有
     private volatile int processingNum = 0;
 
     //測試自旋鎖加數值用，非ticketSpinLock必要欄位
