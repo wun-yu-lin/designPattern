@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import java.util.concurrent.atomic.AtomicReference;
 //使用 AtomicReference 的版本
 public class CLHLock2 {
-    static Logger logger = LoggerFactory.getLogger("CLHLock2");
+    static Logger logger = LoggerFactory.getLogger(CLHLock2.class.getName());
 
     private AtomicReference<CLHNode> tail = new AtomicReference<>();
 
