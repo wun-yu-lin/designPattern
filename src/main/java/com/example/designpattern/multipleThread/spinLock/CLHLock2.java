@@ -65,15 +65,13 @@ public class CLHLock2 {
 
         };
 
-        Thread t1 = new Thread(task, "Thread-1");
-        Thread t2 = new Thread(task, "Thread-2");
-        Thread t3 = new Thread(task, "Thread-3");
-        Thread t4 = new Thread(task, "Thread-4");
-
-        t1.start();
-        t2.start();
-        t3.start();
-        t4.start();
+        int threadNo = 0;
+        for (int i = 0; i < 100; i++) {
+            String threadName = "Thread-" + threadNo;
+            Thread thread = new Thread(task, threadName);
+            thread.start();
+            threadNo++;
+        }
     }
 
 }
