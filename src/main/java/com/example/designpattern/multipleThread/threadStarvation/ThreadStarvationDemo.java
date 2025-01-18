@@ -7,13 +7,13 @@ public class ThreadStarvationDemo {
     private static Object lock = new Object();
 
     @FunctionalInterface
-    interface ThreadRunnable<T, E> {
-        void run(T arg1, E arg2);
+    interface ThreadRunnable<T> {
+        void run(T arg1);
     }
 
     public static void main(String[] args) {
 
-        ThreadRunnable<JProgressBar, Object> threadRunnable = (bar, lock) -> {
+        ThreadRunnable<JProgressBar> threadRunnable = (bar) -> {
             bar.setString(Thread.currentThread().getName());
             int c = 0;
             while (true) {
@@ -35,7 +35,7 @@ public class ThreadStarvationDemo {
 
     }
 
-    public static void createFrameAndProcess(ThreadRunnable<JProgressBar, Object> runnable, String title,
+    public static void createFrameAndProcess(ThreadRunnable<JProgressBar> runnable, String title,
                                              int threadCount) {
         JFrame jFrame = new JFrame(title);
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,7 +47,7 @@ public class ThreadStarvationDemo {
             progressBar.setMinimum(0);
             progressBar.setMaximum(1000);
             jFrame.add(progressBar);
-            new Thread(() -> runnable.run(progressBar, lock)).start();
+            new Thread(() -> runnable.run(progressBar)).start();
         }
         jFrame.setVisible(true);
     }
