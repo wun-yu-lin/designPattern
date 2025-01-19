@@ -22,10 +22,9 @@ public class ThreadStarvationDemo {
                         break;
                     }
                     bar.setValue(++c);
-                    try {
-                        Thread.sleep(1);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
+                    int temp = 0;
+                    for (long i = 0; i <10000000 ; i++) {
+                        temp++;
                     }
                 }
             }
@@ -47,7 +46,7 @@ public class ThreadStarvationDemo {
             progressBar.setMinimum(0);
             progressBar.setMaximum(1000);
             jFrame.add(progressBar);
-            new Thread(() -> runnable.run(progressBar)).start();
+            new Thread(() -> runnable.run(progressBar), ThreadStarvationDemo.class.getName() + "_" + i).start();
         }
         jFrame.setVisible(true);
     }

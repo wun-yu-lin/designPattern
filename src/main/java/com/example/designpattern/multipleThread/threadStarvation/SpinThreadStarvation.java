@@ -1,9 +1,6 @@
 package com.example.designpattern.multipleThread.threadStarvation;
 
-import com.example.designpattern.multipleThread.spinLock.CLHLock3;
-import com.example.designpattern.multipleThread.spinLock.MCSLock;
-import com.example.designpattern.multipleThread.spinLock.MCSLock2;
-import com.example.designpattern.multipleThread.spinLock.OriginSpinLock;
+import com.example.designpattern.multipleThread.spinLock.*;
 
 import javax.swing.*;
 import java.awt.*;
