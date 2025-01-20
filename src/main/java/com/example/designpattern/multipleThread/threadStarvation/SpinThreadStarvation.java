@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SpinThreadStarvation {
-    private static CLHLock3 spinLock = new CLHLock3();
+    private static OriginSpinLock spinLock = new OriginSpinLock();
     private static List<Thread> threads = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -31,7 +31,7 @@ public class SpinThreadStarvation {
                     if (c >= 1000)
                         break;
 
-                    spinLock.lock();
+                    spinLock.lock(Thread.currentThread().getName());
                     progressBar.setValue(++c);
                     int a = 0;
                     for (int j = 0; j < 10; j++) {
