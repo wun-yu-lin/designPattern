@@ -12,7 +12,7 @@ public class PriorityThreadStarvation {
         JFrame jFrame = new JFrame(PriorityThreadStarvation.class.getName());
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame.setLayout(new FlowLayout(FlowLayout.LEFT));
-        jFrame.setSize(new Dimension(350, 200));
+        jFrame.setSize(new Dimension(350, 400));
         Integer currentProcess = Runtime.getRuntime().availableProcessors();
         for (int i = 0; i < currentProcess * 2; i++) {
             JProgressBar progressBar = new JProgressBar();
